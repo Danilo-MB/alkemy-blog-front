@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 /** 
 *@author
@@ -16,9 +17,10 @@ function PostsList(){
   const fetchItems = async () => {
     const data = await fetch('https://jsonplaceholder.typicode.com/posts');
     const items = await data.json();
-    console.log(items);
+    //console.log(items);
     setItems(items);
   }
+
 
   return(
     <div>
@@ -36,13 +38,17 @@ function PostsList(){
           <tr>
             <td>{item.title}</td>
             <td>
-                <a href={'/posts/' + item.id}>Detalle</a>
+                <button href={'/posts/' + item.id}>Detalle</button>
             </td>
             <td>
-                <a href={'/posts/' + item.id}>Editar</a>
+                <button href={'/edit/' + item.id}>Editar</button>
             </td>
             <td>
-              <a>Eliminar</a>
+              <button onClick={ () => {
+                axios.delete(`https://jsonplaceholder.typicode.com/posts/${item.id}`);
+                alert("Ha sido eliminado el Post # " + item.id);
+                }}
+                >Eliminar</button>
             </td>
           </tr>
           )}

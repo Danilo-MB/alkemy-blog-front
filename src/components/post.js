@@ -20,7 +20,7 @@ function Post({match}){
         const item = await fetchItem.json();
         setItem(item);
     };
-    console.log(item);
+    //console.log(item);
 
 //
     return(

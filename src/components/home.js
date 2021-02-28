@@ -1,6 +1,7 @@
 import React from 'react';
 import PostsList from './postsList';
 //import ReactDOM from 'react-dom';
+import Button from 'react-bootstrap/Button';
 
 /** 
 *@author
@@ -10,6 +11,7 @@ import PostsList from './postsList';
 const Home = (props) => {
     return(
         <div>
+            <Button href="/create">Crear Post</Button>
             <PostsList/>
         </div>
  
